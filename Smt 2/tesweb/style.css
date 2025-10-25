@@ -1,0 +1,1028 @@
+/* --- Pengaturan Dasar & Gaya untuk Tampilan Seluler (Mobile First) --- */
+:root {
+    --primary-color: #2e8b57; /* Warna utama (Hijau) */
+    --secondary-color: #f0f8ff; /* Warna sekunder (Biru muda pucat) */
+    --text-color: #333; /* Warna teks */
+    --card-bg: #ffffff; /* Warna latar belakang kartu */
+    --shadow: 0 4px 12px rgba(0,0,0,0.08); /* Efek bayangan */
+    --border-radius: 16px; /* Radius sudut (untuk membuatnya tumpul) */
+    --pill-bg-category: #1EE9B6; /* Warna pil kategori */
+    --pill-bg-location: #FFC107; /* Warna pil lokasi */
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    background-color: #f8f9fa;
+    color: var(--text-color);
+    padding-top: 70px; /* Jarak untuk header yang menempel di atas */
+    padding-bottom: 120px; 
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* --- Gaya Header (Bagian Atas) --- */
+.header {
+    background-color: var(--card-bg);
+    padding: 10px 5%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: fixed; /* Header akan selalu menempel di atas */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001; /* Posisinya di atas elemen lain */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: top 0.3s ease-in-out; /* Animasi saat muncul/hilang */
+}
+.logo {
+    height: 40px; 
+}
+.login-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    font-size: 0.9rem;
+}
+.login-btn:hover {
+    background-color: #256d44; /* Warna hijau lebih gelap saat disentuh */
+}
+
+/* --- Gaya Slider Gambar (Korsel) --- */
+.slider-container {
+    position: relative;
+    width: 90%;
+    max-width: 1200px; 
+    margin: 20px auto 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    aspect-ratio: 16 / 9;
+}
+
+.slider-wrapper {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.slider-btn.prev-btn { left: 15px; }
+.slider-btn.next-btn { right: 15px; }
+
+.slider-dots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active { background-color: white; }
+
+
+/* --- Gaya Menu Ikon --- */
+.icon-menu {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin: 25px 0;
+    flex-wrap: wrap; 
+    padding: 0 5%;
+}
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-color);
+    font-size: 0.8rem;
+    font-weight: 500;
+    flex-basis: 18%; 
+    margin-bottom: 10px;
+}
+.icon-item .material-symbols-outlined {
+    background-color: #e0f2f1;
+    color: var(--primary-color);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Desain Kartu Terpadu --- */
+.card {
+    background-color: #E3F6FF;
+    border-radius: var(--border-radius);
+    padding: 12px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-image-container {
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.card-content {
+    padding: 0;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-meta {
+    margin-bottom: 12px;
+    min-height: 26px; /* Memberi ruang agar layout tidak berantakan jika tidak ada pil */
+}
+
+.pills-container {
+    display: flex;
+    gap: 8px;
+}
+
+.category-pill, .location-pill {
+    color: var(--text-color);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.category-pill {
+    background-color: var(--pill-bg-category);
+}
+.location-pill {
+    background-color: var(--pill-bg-location);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.location-pill .material-symbols-outlined {
+    font-size: 14px;
+}
+
+.card-content h4 { 
+    margin: 0 0 8px 0; 
+    font-size: 1.1rem; 
+    font-weight: 700;
+}
+.card-content p { 
+    margin: 0 0 16px 0; 
+    font-size: 0.9rem; 
+    color: #555;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.details-btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: background-color 0.3s;
+}
+.details-btn:hover {
+    background-color: #256d44;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.author-info img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-info span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+
+/* --- Pengaturan Dasar untuk Bagian yang Bisa Digeser Horizontal --- */
+.horizontal-scroll-section {
+     position: relative;
+     margin-bottom: 20px;
+}
+.horizontal-scroll-section h2 { 
+    font-size: 1.5rem; 
+    margin-top: 0;
+    margin-bottom: 20px; 
+    padding: 0 5%; 
+}
+
+.horizontal-grid-container {
+    overflow: hidden; 
+}
+
+.horizontal-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    padding: 0 5% 15px 5%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    cursor: grab; /* Kursor tangan untuk menandakan bisa digeser */
+    scroll-behavior: smooth; /* Efek geser yang mulus */
+}
+.horizontal-grid.active {
+    cursor: grabbing; /* Kursor saat sedang digeser */
+}
+
+.horizontal-grid::-webkit-scrollbar {
+    display: none; /* Sembunyikan scrollbar */
+}
+.horizontal-grid .card {
+    scroll-snap-align: start; 
+}
+
+/* --- Pengaturan Ukuran Kartu per Bagian --- */
+.horizontal-grid .card {
+    flex: 0 0 80%;
+    width: 80%;
+}
+
+.news-grid .card,
+.blog-grid .card {
+    flex: 0 0 85%;
+    width: 85%;
+}
+
+.scroll-btn {
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    display: none; 
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+.scroll-btn.prev-btn { left: 10px; }
+.scroll-btn.next-btn { right: 10px; }
+
+/* --- Gaya Footer (Bagian Bawah) --- */
+.footer { text-align: center; padding: 20px 5%; font-size: 0.9rem; color: #888; }
+
+/* --- Gaya Menu Navigasi Bawah --- */
+.bottom-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    background-color: var(--primary-color);
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    gap: 12px;
+}
+
+.bottom-nav .nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.2s ease, background-color 0.2s;
+    border-radius: 50%;
+}
+
+.bottom-nav .nav-item:hover {
+    transform: translateY(-3px);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.bottom-nav .nav-item.active {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.bottom-nav .nav-item .material-symbols-outlined {
+    font-size: 30px;
+}
+
+/* --- Gaya untuk Tampilan Tablet (Layar 768px ke atas) --- */
+@media (min-width: 768px) {
+    .horizontal-grid .card {
+        flex-basis: 45%;
+        width: 45%;
+    }
+
+    .news-grid .card,
+    .blog-grid .card {
+        flex-basis: 60%;
+        width: 60%;
+    }
+
+    .scroll-btn {
+        display: flex; /* Tampilkan tombol geser di tablet/desktop */
+    }
+}
+
+/* --- Gaya untuk Tampilan Desktop (Layar 1024px ke atas) --- */
+@media (min-width: 1024px) {
+    .horizontal-grid .card {
+        flex-basis: 31%;
+        width: 31%;
+    }
+    .news-grid .card,
+    .blog-grid .card {
+        flex-basis: 45%;
+        width: 45%;
+    }
+}
+
+ /* --- Bagian Info Cuaca & Berita --- */
+        .info-grid {
+            display: flex;
+            gap: 16px;
+            padding: 0 5%;
+            margin-bottom: 25px;
+        }
+        .info-card {
+            flex: 1;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-color);
+            min-height: 120px;
+        }
+        .info-card.cuaca-card {
+            background-color: #D6F0FF;
+        }
+        .info-card.berita-card {
+            background-color: #FFEADD;
+        }
+        .info-card .material-symbols-outlined {
+            font-size: 40px;
+            margin-bottom: 8px;
+        }
+        .info-card h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+/* --- Tambahan untuk Halaman Search --- */
+.search-page-container {
+    padding: 20px 5%;
+}
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 25px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+.search-bar-container input {
+    flex-grow: 1;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 1rem;
+    margin: 0 10px;
+}
+.recent-searches {
+    margin-bottom: 25px;
+}
+.recent-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+    color: var(--text-color);
+    font-weight: 600;
+}
+.featured-card {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 25px;
+    color: white;
+}
+.featured-card img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    height: 250px;
+}
+.featured-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+.featured-tag {
+    background-color: var(--pill-bg-category);
+    color: var(--text-color);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+.featured-content h3 { margin: 10px 0; }
+.featured-content p { font-size: 0.9rem; margin-bottom: 15px; }
+
+
+/* --- Tambahan untuk Halaman Tiket --- */
+.page-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.page-header h1 {
+    font-size: 1.2rem;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+    transform: translateX(-12px); /* Centering adjustment */
+}
+.back-button { color: var(--text-color); }
+.ticket-page-container { padding: 20px 5%; }
+.ticket-card {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    color: white;
+}
+.ticket-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+}
+.ticket-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+}
+.ticket-overlay h3 { margin: 0 0 10px 0; font-size: 1.4rem; }
+.ticket-info {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+.info-item { display: flex; align-items: center; gap: 5px; font-size: 0.9rem; }
+.view-ticket-btn {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--text-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- Tambahan untuk Halaman Profil --- */
+.profile-page-body { background-color: #F0F8FF; padding-top: 20px; }
+.profile-page-container { padding: 0 5%; }
+.profile-header-card {
+    background: linear-gradient(90deg, #1EE9B6, #2E8B57);
+    color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+.profile-header-card img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid white; }
+.profile-header-info h2 { margin: 0 0 5px 0; font-size: 1.5rem; }
+.profile-header-info p { margin: 0 0 10px 0; font-size: 0.9rem; opacity: 0.9; }
+.profile-header-info a {
+    color: var(--primary-color);
+    background-color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.menu-section-title { font-size: 1rem; color: #555; margin: 20px 0 10px 0; font-weight: 600; }
+.menu-card { background-color: white; border-radius: var(--border-radius); }
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    color: var(--text-color);
+    font-weight: 600;
+    border-bottom: 1px solid #f0f0f0;
+}
+.menu-item:last-child { border-bottom: none; }
+.menu-item .material-symbols-outlined { color: var(--primary-color); margin-right: 15px; }
+.menu-item .arrow { margin-left: auto; color: #ccc; }
+.business-cta-card {
+    background-color: #E3F6FF;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-top: 25px;
+    text-align: center;
+}
+.business-cta-card h4 { margin: 0 0 10px 0; }
+.business-cta-card p { margin: 0 0 15px 0; font-size: 0.9rem; color: #555; }
+.business-cta-card a {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.logout-button {
+    display: block;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 25px;
+    margin-top: 20px;
+    font-weight: 700;
+}
+
+
+/* ------------------------ halaman destinasi wisata --- */
+
+/* --- Gaya untuk Halaman Destinasi Wisata --- */
+.destination-page-body {
+    background-color: #f8f9fa;
+    padding-bottom: 100px; /* Space for the fixed footer */
+    padding-top: 0;
+}
+
+/* Header & Image Slider */
+.destination-header {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    overflow: hidden;
+}
+.destination-slider-wrapper {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+.dest-slide {
+    min-width: 100%;
+    height: 100%;
+}
+.dest-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.dest-back-btn, .dest-icon-btn {
+    position: absolute;
+    top: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+.dest-back-btn { left: 15px; }
+.dest-action-icons {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+.dest-dots {
+    bottom: 10px;
+}
+
+/* Main Content Styling */
+.destination-content {
+    background-color: #f8f9fa;
+    border-radius: 20px 20px 0 0;
+    margin-top: -20px;
+    position: relative;
+    z-index: 5;
+    padding: 20px 5%;
+}
+
+.dest-title-section {
+    margin-bottom: 20px;
+}
+.dest-title-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.dest-title-line h1 {
+    font-size: 1.8rem;
+    margin: 0;
+}
+.dest-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+.dest-rating .material-symbols-outlined {
+    color: #FFC107;
+    font-size: 24px;
+}
+.dest-location-line {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.dest-tags {
+    display: flex;
+    gap: 10px;
+}
+.dest-tags .tag {
+    background-color: #e0f2f1;
+    color: var(--primary-color);
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Reusable Destination Card */
+.dest-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 15px;
+}
+.dest-card-title {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.dest-card p {
+    margin: 0;
+    line-height: 1.6;
+    color: #555;
+}
+.read-more {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+.map-container {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 200px;
+}
+.map-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Facilities Section */
+.facilities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+.facility-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.facility-item .material-symbols-outlined {
+    color: var(--primary-color);
+    font-size: 32px;
+}
+
+/* Reviews Section */
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+.review-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.review-header strong {
+    font-size: 1rem;
+}
+.review-rating .material-symbols-outlined {
+    font-size: 18px;
+    color: #ccc;
+}
+.review-rating .material-symbols-outlined.filled {
+    color: #FFC107;
+}
+.review-text {
+    font-style: italic;
+}
+
+/* Operating Hours Section */
+.ops-hours-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+.ops-hours-item .material-symbols-outlined {
+    color: var(--primary-color);
+}
+
+
+/* Fixed Footer */
+.destination-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+    z-index: 1000;
+}
+.price-info .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+.price-info .price-per {
+    font-size: 1rem;
+    color: #555;
+}
+.buy-ticket-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* --- Revisi Gaya untuk Header Destinasi --- */
+.destination-header {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    overflow: hidden;
+}
+.destination-slider-wrapper {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+    position: relative; /* Untuk memposisikan tombol navigasi */
+}
+.dest-slide {
+    min-width: 100%;
+    height: 100%;
+}
+.dest-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.dest-back-btn, .dest-icon-btn, .dest-like-btn {
+    position: absolute;
+    top: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+.dest-back-btn { left: 15px; }
+.dest-action-icons {
+    position: absolute;
+    top: 20px;
+    right: 70px; /* Geser ke kiri untuk memberi ruang tombol like */
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+.dest-like-btn {
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.dest-like-btn .material-symbols-outlined {
+    font-size: 24px;
+}
+
+/* Slider Navigation Arrows */
+.slider-prev, .slider-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 10;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    outline: none;
+}
+.slider-prev:hover, .slider-next:hover {
+    opacity: 1;
+}
+.slider-prev { left: 15px; }
+.slider-next { right: 15px; }
+.slider-prev span, .slider-next span {
+    font-size: 1.2rem;
+}
+
+/* Slider Dots */
+.dest-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+}
+.slider-dot.active {
+    background-color: white;
+}
+
+/* --- Gaya untuk Ulasan Pengunjung --- */
+.review-item {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+.review-item:last-child {
+    border-bottom: none;
+}
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+.review-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.review-header strong {
+    font-size: 1rem;
+}
+.review-rating .material-symbols-outlined {
+    font-size: 18px;
+    color: #ccc;
+}
+.review-rating .material-symbols-outlined.filled {
+    color: #FFC107;
+}
+.review-text {
+    font-style: italic;
+    color: #333;
+    margin-bottom: 0;
+}

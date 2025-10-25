@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Energi Hijau Nusantara</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #222;
+            background-color: #f9f9f9;
+        }
+
+        /* === NAVBAR === */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+        nav h1 {
+            color: #00a86b;
+            font-weight: 700;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        nav ul li a:hover {
+            color: #00a86b;
+        }
+
+        /* === HERO SECTION === */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                        url('https://i.ibb.co.com/GQ6vkcCZ/Chat-GPT-Image-24-Okt-2025-10-07-36.png') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding: 0 10%;
+        }
+        header h2 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+        }
+        header button {
+            margin-top: 1.5rem;
+            background: #00a86b;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            color: #fff;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        header button:hover {
+            background: #00905f;
+        }
+
+        /* === ABOUT SECTION === */
+        section {
+            padding: 80px 10%;
+        }
+        #about {
+            background: #fff;
+        }
+        #about h2 {
+            color: #00a86b;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        .about-img {
+            flex: 1 1 40%;
+            background: url('https://i.ibb.co.com/s9RqPSbD/Whats-App-Image-2025-10-24-at-10-40-34-8e6b5e95.jpg') center/cover no-repeat;
+            border-radius: 20px;
+            height: 300px;
+        }
+        .about-img2 {
+            flex: 1 1 40%;
+            background: url('https://i.ibb.co.com/WNx079fq/Whats-App-Image-2025-10-24-at-10-49-34-79071c61.jpg') center/cover no-repeat;
+            border-radius: 20px;
+            height: 300px;
+        }
+        .about-img3 {
+            flex: 1 1 40%;
+            background: url('https://i.ibb.co.com/s9RqPSbD/Whats-App-Image-2025-10-24-at-10-40-34-8e6b5e95.jpg') center/cover no-repeat;
+            border-radius: 20px;
+            height: 300px;
+        }
+        .about-text {
+            flex: 1 1 55%;
+        }
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        /* === STRUCTURE TABLE === */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px 15px;
+            text-align: left;
+        }
+        th {
+            background: #00a86b;
+            color: white;
+        }
+
+        /* === CONTACT SECTION === */
+        #contact {
+            background: linear-gradient(to right, #00a86b, #00c77b);
+            color: #fff;
+        }
+        #contact h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        .contact-info, .contact-form {
+            flex: 1 1 45%;
+        }
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 10px;
+        }
+        .contact-form button {
+            width: 100%;
+            background: #fff;
+            color: #00a86b;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .contact-form button:hover {
+            background: #e6ffe6;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: #111;
+            color: #aaa;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h2 { font-size: 2rem; }
+            .about-content { flex-direction: column; }
+            .contact-container { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- === NAVBAR === -->
+    <nav>
+        <h1>PT. Energi Hijau Nusantara</h1>
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- === HOME === -->
+    <header id="home">
+        <h2>PT Energi Hijau Nusantara</h2>
+        <p>"Menerangi Negeri dengan Energi Bersih."</p>
+        <p>Selamat datang di perusahaan yang berkomitmen menghadirkan solusi energi terbarukan untuk Indonesia yang lebih bersih dan berkelanjutan.</p>
+        <button onclick="window.location.href='#about'">Pelajari Lebih Lanjut</button>
+    </header>
+
+    <!-- === ABOUT === -->
+    <section id="about">
+        <h2>Tentang Kami</h2>
+        <div class="about-content">
+            <div class="about-img"></div>
+            <div class="about-img2"></div>
+            <div class="about-img3"></div>
+            <div class="about-text">
+                <p><strong>PT Energi Hijau Nusantara</strong> berdiri pada tahun 2022 dengan fokus utama pada pengembangan energi terbarukan, khususnya tenaga surya dan biomassa.</p>
+                <p><strong>Sejarah :</strong> PT Energi Hijau Nusantara resmi didirikan pada tahun 2022, pada momentum di mana kesadaran global akan perubahan iklim mencapai puncaknya, dan Indonesia menunjukkan komitmen kuat untuk mencapai Net Zero Emission (NZE). Awal Berdiri (2022): Pendirian EHN didorong oleh sekelompok profesional energi dan teknologi yang memiliki visi kuat untuk mengisi kesenjangan pasar dalam penyediaan solusi energi bersih yang andal dan terjangkau di Indonesia. Fokus awal perusahaan ditetapkan pada dua pilar utama yang paling relevan dengan potensi sumber daya Indonesia: Tenaga Surya (Solar PV) dan Biomassa.</p>
+                <p><strong>Visi :</strong> Menjadi pelopor energi hijau untuk Indonesia bebas emisi.</p>
+                <p><strong>Misi :</strong></p>
+                <ul>
+                    <li>Mengembangkan teknologi energi terbarukan.</li>
+                    <li>Memberikan layanan konsultasi efisiensi energi.</li>
+                    <li>Mendorong inovasi energi bersih.</li>
+                    <li>Berkolaborasi dengan pemerintah dan swasta.</li>
+                </ul>
+
+                <h3 style="margin-top:1.5rem;">Struktur Organisasi</h3>
+                <table>
+                    <tr><th>Jabatan</th><th>Nama</th></tr>
+                    <tr><td>Direktur Utama</td><td>Oktavian Ramadhani</td></tr>
+                    <tr><td>Komisaris</td><td>Shalsa Fitri Rahmadani</td></tr>
+                    <tr><td>Manajer Produksi</td><td>Iksan Nurudin Effendi</td></tr>
+                    <tr><td>Manajer Keuangan</td><td>Muhammad Rizky Nurrohman</td></tr>
+                    <tr><td>Manajer Pemasaran</td><td>Aliya Safira Rais</td></tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- === CONTACT === -->
+    <section id="contact">
+        <h2>Kontak Kami</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p>📍 Jl. Merdeka No. 123, Jakarta Selatan, DKI Jakarta 12110</p>
+                <p>📞 (021) 7654321</p>
+                <p>📧 info@energihijaunusantara.co.id</p>
+                <p>🌐 www.energihijaunusantara.co.id</p>
+                <p>📱 WhatsApp: +62 812 3456 7890</p>
+                <p>📸 Instagram: @energi_hijau_nusantara</p>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <input type="text" placeholder="Nama Anda" required>
+                    <input type="email" placeholder="Email Anda" required>
+                    <textarea rows="5" placeholder="Pesan Anda..." required></textarea>
+                    <button type="submit">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 PT Energi Hijau Nusantara | Energi Bersih untuk Negeri 🌞
+    </footer>
+</body>
+</html>
